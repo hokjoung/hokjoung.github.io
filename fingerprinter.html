@@ -1,0 +1,150 @@
+<head>
+    <title>Fingerprinter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.0.0/fingerprint2.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>hey</h1>
+    <!--
+    <script>
+        if (window.requestIdleCallback) {
+        requestIdleCallback(function () {
+            Fingerprint2.get(function (components) {
+                console.log(components) // an array of components: {key: ..., value: ...}
+            })
+        })
+        } else {
+            setTimeout(function () {
+            Fingerprint2.get(function (components) {
+                console.log(components) // an array of components: {key: ..., value: ...}
+            })  
+        }, 500)
+    } 
+    </script>
+    -->
+    <script>
+    /*
+        Fingerprint2.get({fonts: {extendedJsFonts: true}}, function (components) {
+            document.write('<br>################################ 0 ################################<br>');                        
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write(JSON.stringify(murmur, null, 4));
+            document.write(JSON.stringify(components, null, 4)); 
+        })
+
+        Fingerprint2.get({fonts: {extendedJsFonts: true}, excludes: {canvas: true, userAgent: true, webgl: true}}, function(components){
+            document.write('<br>################################ 1 ################################<br>');
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write(JSON.stringify(murmur, null, 4));
+            document.write(JSON.stringify(components, null, 4)); 
+        });
+        
+        Fingerprint2.get({fonts: {extendedJsFonts: true}, excludes : {canvas: true, userAgent: true, webgl: true, openDatabase: true, deviceMemory: true}}, function(components){
+            document.write('<br>################################ 2 ################################<br>');
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write(JSON.stringify(murmur, null, 4));
+            document.write(JSON.stringify(components, null, 4));
+        });
+
+        Fingerprint2.get({fonts: {extendedJsFonts: true}, excludes : {canvas: true, userAgent: true, webgl: true, openDatabase: true, deviceMemory: true, plugins: true}}, function(components){
+            document.write('<br>################################ 3 ################################<br>');
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write(JSON.stringify(murmur, null, 4));
+            document.write(JSON.stringify(components, null, 4)); 
+        });
+        */
+        $.getJSON('https://ipapi.co/json/', function(data) {
+            document.write('<pre>'+JSON.stringify(data, null, 2)+'</pre>');
+        });
+
+        Fingerprint2.get({fonts: {extendedJsFonts: true}}, function (components) {
+            document.write('<br>################################ 0 ################################<br>');
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write('<pre>'+JSON.stringify(murmur, null, 4)+'</pre>');
+            //document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>'); 
+        });
+        
+        Fingerprint2.get({fonts: {extendedJsFonts: true}, excludes: {enumerateDevices: true, userAgent: true}}, function(components){
+            document.write('<br>################################ 1 ################################<br>');
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write('<pre>'+JSON.stringify(murmur, null, 4)+'</pre>');
+            document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>'); 
+        });
+        
+        Fingerprint2.get({fonts: {extendedJsFonts: true}, excludes: {enumerateDevices: true, userAgent: true, canvas: true}}, function(components){
+            document.write('<br>################################ 1 ################################<br>');
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write('<pre>'+JSON.stringify(murmur, null, 4)+'</pre>');
+            document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>'); 
+        });
+        
+        Fingerprint2.get({fonts: {extendedJsFonts: true}, excludes: {enumerateDevices: true}}, function(components){
+            document.write('<br>################################ 2 ################################<br>');
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write('<pre>'+JSON.stringify(murmur, null, 4)+'</pre>');
+            document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>'); 
+        });
+        
+        Fingerprint2.get({fonts: {extendedJsFonts: true}, excludes: {canvas: true, userAgent: true, webgl: true}}, function(components){
+            document.write('<br>################################ 3 ################################<br>');
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write('<pre>'+JSON.stringify(murmur, null, 4)+'</pre>');
+            document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>'); 
+        });
+        Fingerprint2.get({fonts: {extendedJsFonts: true}, excludes : {canvas: true, userAgent: true, webgl: true, openDatabase: true, deviceMemory: true}}, function(components){
+            document.write('<br>################################ 4 ################################<br>');
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write('<pre>'+JSON.stringify(murmur, null, 4)+'</pre>');
+            document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>');
+        });
+
+        Fingerprint2.get({fonts: {extendedJsFonts: true}, excludes : {canvas: true, userAgent: true, webgl: true, openDatabase: true, deviceMemory: true, plugins: true, enumerateDevices: true}}, function(components){
+            document.write('<br>################################ 5 ################################<br>');
+            var values = components.map(function (component) { return component.value })
+            var murmur = Fingerprint2.x64hash128(values.join(''), 31)
+            document.write('<pre>'+JSON.stringify(murmur, null, 4)+'</pre>');
+            document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>'); 
+        });
+
+
+
+/*
+        new Fingerprint2().get(function(result, components){
+            document.write('<br>################################ 0 ################################<br>');
+            document.write('<pre>'+JSON.stringify(result, null, 4)+'</pre>'); 
+            document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>'); 
+        })
+
+        new Fingerprint2({excludeCanvas: true, excludeUserAgent: true, excludeWebGL: true}).get(
+        (_keyFingerPrint, components) => {
+            document.write('<br>################################ 1 ################################<br>');
+            document.write('<pre>'+JSON.stringify(_keyFingerPrint, null, 4)+'</pre>');
+            document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>'); 
+        });
+        
+        new Fingerprint2({excludeCanvas: true, excludeUserAgent: true, excludeWebGL: true, excludeOpenDatabase: true, excludeDeviceMemory: true}).get(
+        (_keyFingerPrint, components) => {
+            document.write('<br>################################ 2 ################################<br>');
+            document.write('<pre>'+JSON.stringify(_keyFingerPrint, null, 4)+'</pre>');
+            document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>');
+        });
+
+        new Fingerprint2({excludeCanvas: true, excludeUserAgent: true, excludeWebGL: true, excludeOpenDatabase: true, excludeDeviceMemory: true, excludePlugins: true}).get(
+        (_keyFingerPrint, components) => {
+            document.write('<br>################################ 3 ################################<br>');
+            document.write('<pre>'+JSON.stringify(_keyFingerPrint, null, 4)+'</pre>');
+            document.write('<pre>'+JSON.stringify(components, null, 4)+'</pre>'); 
+        });
+        */
+
+    </script>
+</body>
