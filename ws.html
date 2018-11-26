@@ -534,7 +534,7 @@
             }
              
             function connect() {
-                var socket = new SockJS('http://localhost:21331/ws-connect');
+                var socket = new SockJS('https://localhost:21331/ws-connect');
                 stompClient = Stomp.over(socket);  
                 stompClient.connect({}, function(frame) {
                     setConnected(true);
