@@ -519,9 +519,13 @@
                   = connected ? 'visible' : 'hidden';
                 document.getElementById('response').innerHTML = '';
             }
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
              
-            function connect() {
-                for (i = 0; i < 5000; i++) {
+            async function connect() {
+                for (i = 0; i < 400; i++) {
                     var socket = new SockJS('https://localhost:21331/pages/ws-connect');
                     var stompClient = Stomp.over(socket);  
                     stompClient.connect({}, function(frame) {
@@ -533,6 +537,7 @@
                     });
 
                     stompClients.push(stompClient);
+                    await sleep(1500);
                 }
             }
              
