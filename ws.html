@@ -521,7 +521,7 @@
             }
              
             function connect() {
-                for (i = 0; i < 100; i++) {
+                for (i = 0; i < 5000; i++) {
                     var socket = new SockJS('https://localhost:21331/pages/ws-connect');
                     var stompClient = Stomp.over(socket);  
                     stompClient.connect({}, function(frame) {
